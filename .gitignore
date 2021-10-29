@@ -3,3 +3,5 @@
 /.ipynb_checkpoints/
 data.zip
 /data/
+.ipynb_checkpoints
+/human detection.pdf
