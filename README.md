@@ -26,7 +26,7 @@ data label은 bending, lying, sitting, standing으로 이루어져 있습니다.
 Human Detection : [https://www.kaggle.com/deepshah16/silhouettes-of-human-posture?select=standing](https://www.kaggle.com/deepshah16/silhouettes-of-human-posture?select=standing)
 
 ### Code
-사람 Detection은 4기 선배님이신 [유동근 선배님 코드](https://github.com/DonggeunYu/HumanDetectionCCTV)를 사용하였습니다.
+Human Detection은 4기 선배님이신 [유동근 선배님 코드](https://github.com/DonggeunYu/HumanDetectionCCTV)를 사용하였습니다.
 
 ## Sound
 [잠박사 유튜브](https://www.youtube.com/channel/UClrKpnEehrQydacUHBptWcw/videos)
