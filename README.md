@@ -5,6 +5,9 @@ Alchemist 서비스 중 하나인 타이머를 자동으로 멈춰주는 기능�
 
 ## Installation
 Please check Installation procedure in [Install.md](https://github.com/CV-JaeHa/virtual-environment-list/blob/main/torchcv.md)
+```
+% pip3 install socket
+```
 
 # 작동 알고리즘
 1. server에서 5분마다 호출  
@@ -22,7 +25,7 @@ RMPE는 2step 방식을 사용합니다. 2step은 먼저 사람의 bounding box�
 ## Reference
 
 ### Data
-Please dsownload datas follow this [link](https://www.kaggle.com/deepshah16/silhouettes-of-human-posture?select=bending).  
+Please download datas follow this [posture link](https://www.kaggle.com/deepshah16/silhouettes-of-human-posture?select=bending), [sitting human link](http://www2.informatik.uni-freiburg.de/~oliveira/dataset.html).  
 data label은 bending, lying, sitting, standing으로 이루어져 있습니다.  
 하지만 우리는 lying과 sitting data만 이용해 사람을 detect후 classiification 하겠습니다.
 
