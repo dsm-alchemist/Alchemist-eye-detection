@@ -6,7 +6,8 @@ Alchemist 서비스 중 하나인 타이머를 자동으로 멈춰주는 기능�
 ## Installation
 Please check Installation procedure in [Install.md](https://github.com/CV-JaeHa/virtual-environment-list/blob/main/torchcv.md)
 ```
-% pip3 install socket
+# IF your device is mac os
+% brew install libomp
 ```
 
 # 작동 알고리즘
