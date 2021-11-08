@@ -41,6 +41,12 @@ print(out.keys())
 dict_keys(['boxes', 'labels', 'scores', 'keypoints', 'keypoints_scores'])
 우리는 boxes score를 사용하겠다.
 """
+codes = [
+    Path.MOVETO,
+    Path.LINETO,
+    Path.LINETO
+]
+fig, ax = plt.subplots(1, figsize=(16, 16))
 
 # Visualization
 for box, score in zip(out['boxes'], out['scores']):
@@ -48,4 +54,8 @@ for box, score in zip(out['boxes'], out['scores']):
 
     if score < THRESHOLD:
         continue
+
+    box = box.detach().numpy()
+    rect = patches.Rectangle((box[0], box[1]), box[2] - box[0], box[3] - box[1], linewidth=2, edgecolor='b', facecolor='none')
+    ax.add_patch(rect)
 
