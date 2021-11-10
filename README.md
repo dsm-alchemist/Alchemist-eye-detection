@@ -14,7 +14,7 @@ Please check Installation procedure in [Install.md](https://github.com/CV-JaeHa/
 1. server에서 5분마다 호출  
 2. client에서 5초 동안 5장의 사진을 찍음  
 3. client에서 찍은 사진은 server로 전송  
-4. server에서 YOLO가 사람을 감지  
+4. server에서 Resnet이 사람을 감지  
 5. server에서 사람이 없다면 타이머 정지 (단 5개의 사진 모두 사람이 없어야 함)  
 6. server에서 사람이 있다면 일어나있는지 누워있는지 분류모델을 실행  
 7. 누워있다면 타이머 정지, 일어나 있다면 continue.
@@ -31,7 +31,7 @@ data label은 bending, lying, sitting, standing으로 이루어져 있습니다.
 하지만 우리는 lying과 sitting data만 이용해 사람을 detect후 classiification 하겠습니다.
 
 ### Thesis
-Human Detection : [https://www.kaggle.com/deepshah16/silhouettes-of-human-posture?select=standing](https://www.kaggle.com/deepshah16/silhouettes-of-human-posture?select=standing)  
+Human Detection : [https://www.youtube.com/watch?v=WgsZc_wS2qQ&t=632s](https://www.youtube.com/watch?v=WgsZc_wS2qQ&t=632s)  
 번역본 : [https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=worb1605&logNo=221569880346](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=worb1605&logNo=221569880346)
 
 
