@@ -5,3 +5,4 @@ data.zip
 /data/
 .ipynb_checkpoints
 /human detection.pdf
+__pycache__
