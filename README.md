@@ -8,6 +8,7 @@ Please check Installation procedure in [Install.md](https://github.com/CV-JaeHa/
 ```
 # IF your device is mac os
 % brew install libomp
+% conda install flask
 ```
 
 # 작동 알고리즘
