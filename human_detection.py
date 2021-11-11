@@ -43,7 +43,7 @@ img = img.resize((IMG_SIZE, int(img.height * IMG_SIZE / img.width)))
 trf = T.Compose([T.ToTensor()])   # 이미지를 0~1의 값을 값는 텐서로 변경
 input_img = trf(img)
 # print(input_img.shape)  # [채널, 세로, 가로]
-
+ㄴ
 try:
     # Inference
     out = model([input_img])[0]
