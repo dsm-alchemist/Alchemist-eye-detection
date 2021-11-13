@@ -1,0 +1,8 @@
+version: "3"
+services:
+    jupyter-lab:
+        image: alchemist_timer
+        ports:
+            - 0412:0412
+        volumes:
+            - ./:/alchemist_timer
