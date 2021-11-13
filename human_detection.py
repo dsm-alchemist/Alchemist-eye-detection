@@ -34,7 +34,7 @@ def human_detection(img_path):
         """
     except:
         # print("사람이 없습니다")
-        return 0
+        return False
     else:
         """
         Visualization
@@ -58,4 +58,4 @@ def human_detection(img_path):
             ax.imshow(img)
             plt.show()
         """
-        return 1
+        return True
