@@ -46,7 +46,7 @@ Human Detection : [https://www.youtube.com/watch?v=WgsZc_wS2qQ&t=632s](https://w
 
 
 ### Code
-Human Detection은 4기 선배님이신 [유동근 선배님 코드](https://github.com/DonggeunYu/HumanDetectionCCTV)를 사용하였습니다.  
+Human Detection은 4기 선배님이신 [유동근 선배님 코드](https://github.com/DonggeunYu/HumanDetectionCCTV)과 [빵형의 개발도상국님 코드](https://www.youtube.com/watch?v=WgsZc_wS2qQ)를 사용하였습니다.  
 Model : [https://pytorch.org/vision/stable/models.html](https://pytorch.org/vision/stable/models.html)
 
 ## Sound
