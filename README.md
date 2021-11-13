@@ -36,9 +36,9 @@ Human Detection Model은 Pytorch 공식 페이지에 있는 [MASK R-CNN](https:/
 ## Reference
 
 ### Data
-Please download datas follow this [posture link](https://www.kaggle.com/deepshah16/silhouettes-of-human-posture?select=bending), [sitting human link](http://www2.informatik.uni-freiburg.de/~oliveira/dataset.html).  
+Please download datum follow this [posture link](https://www.kaggle.com/deepshah16/silhouettes-of-human-posture?select=bending), [sitting human link](http://www2.informatik.uni-freiburg.de/~oliveira/dataset.html).  
 data label은 bending, lying, sitting, standing으로 이루어져 있습니다.  
-하지만 우리는 lying과 sitting data만 이용해 사람을 detect후 classiification 하겠습니다.
+하지만 우리는 lying과 sitting data만 이용해 사람을 detection 후 classification 하겠습니다.
 
 ### Thesis
 Human Detection : [https://www.youtube.com/watch?v=WgsZc_wS2qQ&t=632s](https://www.youtube.com/watch?v=WgsZc_wS2qQ&t=632s)  
