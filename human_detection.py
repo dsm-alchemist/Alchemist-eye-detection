@@ -14,11 +14,30 @@ def human_detection(path_1, path_2, path_3, path_4, path_5):
     # 95% 이상이 되어야 사람으로 Detect
     THRESHOLD = 0.95
 
-    for i in range(1, 6):
-        path = f"path_{i}"
+    # 이미지 path 리스트
+    path_list = []
+    path_list.append(path_1)
+    path_list.append(path_2)
+    path_list.append(path_3)
+    path_list.append(path_4)
+    path_list.append(path_5)
+
+    # 사람의 위치 좌표
+    """
+    리스트 0~1 : 1번 이미지
+    리스트 2~3 : 2번 이미지
+    리스트 4~5 : 3번 이미지
+    리스트 6~7 : 4번 이미지
+    리스트 8~9 : 5번 이미지
+    """
+    x_coo = []
+    y_coo = []
+
+    for i in range(0, 5):
+        path = path_list[i]
         # img_path = './data/demo/sleep_1.JPG'
         img = Image.open(path)
-        img = img.transpose(Image.ROTATE_270)
+        # img = img.transpose(Image.ROTATE_270)
         img = img.resize((IMG_SIZE, int(img.height * IMG_SIZE / img.width)))
 
         # 이미지를 텐서로 바꿔주기
@@ -38,26 +57,36 @@ def human_detection(path_1, path_2, path_3, path_4, path_5):
             # print("사람이 감지되지 않았습니다.")
             return False
         else:
-            """
-            Visualization
+            # Visualization
             codes = [
                 Path.MOVETO,
                 Path.LINETO,
                 Path.LINETO
             ]
             fig, ax = plt.subplots(1, figsize=(16, 16))
-    
+
             for box, score in zip(out['boxes'], out['scores']):
                 score = score.detach().numpy()
-    
+
                 if score < THRESHOLD:
                     continue
-    
+
                 box = box.detach().numpy()
                 rect = patches.Rectangle((box[0], box[1]), box[2] - box[0], box[3] - box[1], linewidth=2, edgecolor='b', facecolor='none')
                 ax.add_patch(rect)
                 print('사람이 있음.')
-                ax.imshow(img)
-                plt.show()
-            """
-            return True
+                # ax.imshow(img)
+                #plt.show()
+
+                # 0~1 : X좌표 | 2~3 : Y좌표
+                x_coo.append(box[0])
+                x_coo.append(box[1])
+                y_coo.append(box[2])
+                y_coo.append(box[3])
+
+                print(x_coo)
+                print(y_coo)
+
+            return x_coo, y_coo
+
+human_detection('./data/demo/study_1.JPG', './data/demo/study_2.JPG', './data/demo/study_3.JPG', './data/demo/study_4.JPG', './data/demo/two_study.jpeg')
