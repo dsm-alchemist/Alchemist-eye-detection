@@ -7,3 +7,4 @@ data.zip
 /human detection.pdf
 __pycache__
 test.py
+/model/keypointrcnn_resnet50_fpn_coco-fc266e95.pth
