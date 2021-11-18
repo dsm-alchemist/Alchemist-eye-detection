@@ -10,8 +10,10 @@ Alchemist 서비스 중 하나인 타이머를 자동으로 멈춰주는 기능�
 % brew install libomp
 
 # 가상환경은 도커를 사용합니다. 프로젝트 파일로 가서 아래 명령어를 실행해주세요.
-% make build
 % make run
+
+# 도커 접속
+% docker exec -it 컨테이너ID /bin/bash
 
 # 도커 사용 해제
 % make stop
