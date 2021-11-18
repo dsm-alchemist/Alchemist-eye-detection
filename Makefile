@@ -1,6 +1,6 @@
 .PHONY: run
 run: build
-	docker run -d -it --name alchemist-timer -v ${PWD}:/alchemist-timer-stop-condition alchemist-timer /bin/bash
+	docker run -d -itu 0 --name alchemist-timer -v ${PWD}:/alchemist-timer-stop-condition alchemist-timer /bin/bash
 
 .PHONY: build
 build:
