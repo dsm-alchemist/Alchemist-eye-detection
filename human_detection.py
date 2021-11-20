@@ -34,5 +34,3 @@ def human_detect(path_1, path_2, path_3, path_4, path_5):
         else:
             pass
     return True
-
-human_detect('./data/demo/study_4.JPG', './data/demo/study_3.JPG', './data/demo/study_2.JPG', './data/demo/sleep_1.JPG', './data/demo/no_human.png')
