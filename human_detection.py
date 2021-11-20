@@ -30,8 +30,9 @@ def human_detect(path_1, path_2, path_3, path_4, path_5):
         input_img = trf(img)
         # print(input_img.shape)  # [채널, 세로, 가로]
         if return_detect(model, input_img, THRESHOLD) == False:
-            return False
+            return 'NO_HUMAN'
         else:
             pass
     return True
 
+human_detect('./data/demo/study_4.JPG', './data/demo/study_3.JPG', './data/demo/study_2.JPG', './data/demo/sleep_1.JPG', './data/demo/no_human.png')
