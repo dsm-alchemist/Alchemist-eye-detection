@@ -3,14 +3,11 @@ from torchvision import models
 import torchvision.transforms as T
 from PIL import Image
 from return_detect import return_detect
+from load_model import load_model
+from parameter import IMG_SIZE, THRESHOLD
 
 def human_detect(path_1, path_2, path_3, path_4, path_5):
-    # Download Model : https://pytorch.org/vision/stable/models.html
-    model = models.detection.keypointrcnn_resnet50_fpn(pretrained=True).eval()
-
-    IMG_SIZE = 480
-    # 95% 이상이 되어야 사람으로 Detect
-    THRESHOLD = 0.95
+    model = load_model(0)
 
     # 이미지 path 리스트
     path_list = []
