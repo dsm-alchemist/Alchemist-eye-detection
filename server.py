@@ -9,6 +9,6 @@ app.secret_key = 'random string'    # 프레임워크 상에서 꼭 넣으라고
 
 @app.route("/upload", methods=["POST"])
 def upload():
-    uploaded_files = Flask.request.files.getlist("file")
+    uploaded_files = request.files.getlist("file")
     print(uploaded_files)
     return ""
