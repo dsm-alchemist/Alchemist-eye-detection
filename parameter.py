@@ -1,6 +1,6 @@
 # Import Library
 import numpy as np
-import time, os
+import os
 
 # Default Path
 default_path = os.getcwd()
@@ -43,17 +43,10 @@ COLORS = np.array([
     (255, 255, 255),    # 20=tv/monitor
 ])
 
-INSTANCE_LIST = [
-    '__background__', 'person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus',
-    'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'N/A', 'stop sign',
-    'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow',
-    'elephant', 'bear', 'zebra', 'giraffe', 'N/A', 'backpack', 'umbrella', 'N/A', 'N/A',
-    'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball',
-    'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket',
-    'bottle', 'N/A', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl',
-    'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza',
-    'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'N/A', 'dining table',
-    'N/A', 'N/A', 'toilet', 'N/A', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone',
-    'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'N/A', 'book',
-    'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush'
-]
+study_1 = directory_list[2] + 'study_1.JPG'
+study_2 = directory_list[2] + 'study_2.JPG'
+study_3 = directory_list[2] + 'study_3.JPG'
+study_4 = directory_list[2] + 'study_4.JPG'
+study_5 = directory_list[2] + 'study_5.JPG'
+
+study_list = [study_1, study_2, study_3, study_4, study_5]
