@@ -6,10 +6,10 @@ def load_model(model_num):
         model = models.detection.keypointrcnn_resnet50_fpn(pretrained=True).eval()
         return model
     elif model_num == 1:
-        model = models.detection.maskrcnn_resnet50_fpn(pretrained=True).eval()
+        model = models.segmentation.deeplabv3_resnet101(pretrained=True).eval()
         return model
     elif model_num == 2:
-        return False
+        return "No Model"
     else:
         print("모델이 없습니다.")
         print("detection : 0 | segmentation : 1 | classification : 2")
