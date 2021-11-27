@@ -44,7 +44,7 @@ data label은 bending, lying, sitting, standing으로 이루어져 있습니다.
 하지만 우리는 lying과 sitting data만 이용해 사람을 detection 후 classification 하겠습니다.
 
 ### Thesis
-Human Detection : [https://www.youtube.com/watch?v=WgsZc_wS2qQ&t=632s](https://www.youtube.com/watch?v=WgsZc_wS2qQ&t=632s)
+Human Detection : [https://www.youtube.com/watch?v=WgsZc_wS2qQ&t=632s](https://www.youtube.com/watch?v=WgsZc_wS2qQ&t=632s)  
 Human Segementation : [https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html](https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html)
 
 ### Code
