@@ -29,23 +29,23 @@ Alchemist 서비스 중 하나인 타이머를 자동으로 멈춰주는 기능�
 7. server에서 사람이 있다면 일어나있는지 누워있는지 classification모델을 실행.  
 8. 누워있다면 타이머 정지, 일어나 있다면 continue.
 
-## Model
-Human Detection Model은 Pytorch 공식 페이지에 있는 [MASK R-CNN](https://arxiv.org/abs/1703.06870)을 사용하였다.  
-
 ## Server
 서버는 Flask를 사용했습니다.
 
-## Reference
+# Reference
 
-### Data
+## Model
+Human Detection Model은 Pytorch 공식 페이지에 있는 [Keypoint R-CNN](https://arxiv.org/abs/1703.06870)을 사용하였다.  
+Human Segemtation Model은 Pytorch 튜토리얼에 있는 [Mask R-CNN](https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html)을 사용하였다.
+
+## Data
 Please download datum follow this [posture link](https://www.kaggle.com/deepshah16/silhouettes-of-human-posture?select=bending), [sitting human link](http://www2.informatik.uni-freiburg.de/~oliveira/dataset.html).  
 data label은 bending, lying, sitting, standing으로 이루어져 있습니다.  
 하지만 우리는 lying과 sitting data만 이용해 사람을 detection 후 classification 하겠습니다.
 
 ### Thesis
-Human Detection : [https://www.youtube.com/watch?v=WgsZc_wS2qQ&t=632s](https://www.youtube.com/watch?v=WgsZc_wS2qQ&t=632s)  
-번역본 : [https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=worb1605&logNo=221569880346](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=worb1605&logNo=221569880346)
-
+Human Detection : [https://www.youtube.com/watch?v=WgsZc_wS2qQ&t=632s](https://www.youtube.com/watch?v=WgsZc_wS2qQ&t=632s)
+Human Segementation : [https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html](https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html)
 
 ### Code
 Human Detection은 4기 선배님이신 [유동근 선배님 코드](https://github.com/DonggeunYu/HumanDetectionCCTV)과 [빵형의 개발도상국님 코드](https://www.youtube.com/watch?v=WgsZc_wS2qQ)를 사용하였습니다.  
