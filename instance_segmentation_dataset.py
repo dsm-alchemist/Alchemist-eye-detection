@@ -6,7 +6,7 @@ from PIL import Image
 
 """ human segmentation은 posture classification의 input image가 될 것 입니다. """
 
-class human_segmentation(torch.utils.data.Dataset):
+class SegementationDataset(torch.utils.data.Dataset):
     def __init__(self, root, transforms):
         self.root = root
         self.transforms = transforms
