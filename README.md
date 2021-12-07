@@ -24,10 +24,10 @@ Alchemist 서비스 중 하나인 타이머를 자동으로 멈춰주는 기능�
 2. client에서 AI 호출.  
 3. client에서 찍은 사진은 server로 전송.  
 4. server에서 keypoint R-CNN이 사람을 detect.  
-5. server에서 사람이 없다면 타이머 정지 (1개의 사진만 사람이 없어도).  
-6. Input 이미지를 segmentation을 하여 사람만 검정 나머지는 흰색으로 output을 만들어 classification 모델의 Input 값으로 반환.  
-7. server에서 사람이 있다면 일어나있는지 누워있는지 classification모델을 실행.  
-8. 누워있다면 타이머 정지, 일어나 있다면 continue.
+   1. server에서 사람이 없다면 타이머 정지 (1개의 사진만 사람이 없어도 됨).  
+5. Input 이미지를 segmentation을 하여 사람만 검정 나머지는 흰색으로 output을 만들어 classification 모델의 Input 값으로 반환.  
+6. server에서 사람이 있다면 일어나있는지 누워있는지 classification모델을 실행.  
+7. 누워있다면 타이머 정지, 일어나 있다면 continue.
 
 ## Server
 서버는 Flask를 사용했습니다.
