@@ -6,13 +6,14 @@ from urllib.request import urlopen
 import numpy as np
 from parameter import black
 
-
+# URL로 받아올 경우 이미지로 변환해주는 함수
 def url_to_image(url, readFlag=cv2.IMREAD_COLOR):
     resp = urlopen(url)
     image = np.asarray(bytearray(resp.read()), dtype="uint8")
     image = cv2.imdecode(image, readFlag)
     return image
 
+# Instance Segmenatation 함수
 def instance_segmentation_model(img_path, threshold=0.95, url=False):
     masks, pred_cls = get_prediction(img_path, threshold=threshold, url=url)
     for i in range(len(masks)):

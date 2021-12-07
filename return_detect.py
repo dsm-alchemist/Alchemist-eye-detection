@@ -13,7 +13,7 @@ def return_detect(model, input_img, THRESHOLD):
             score = score.detach().numpy()
 
             # 사람일 확률
-            if score < THRESHOLD:
+            if score > THRESHOLD:
                 return True
 
         """ Visualization 시 앞에 주석을 없애고 return True에 주석을 달아주세요.
