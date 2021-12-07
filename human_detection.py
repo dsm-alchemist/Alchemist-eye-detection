@@ -1,26 +1,18 @@
 # Import Library
-import torch
 import torchvision.transforms as T
 from PIL import Image
 from return_detect import return_detect
 from load_model import load_model
-from parameter import IMG_SIZE, THRESHOLD, study_list
+from parameter import IMG_SIZE, THRESHOLD
 import requests
 from io import BytesIO
+from get_path import get_path
 
 def human_detect(path_1, path_2, path_3, path_4, path_5, url=False):
-    if torch.cuda.is_available():
-        model = load_model(0).cuda()
-    else:
-        model = load_model(0)
+    model = load_model(0)
 
     # 이미지 path 리스트
-    path_list = []
-    path_list.append(path_1)
-    path_list.append(path_2)
-    path_list.append(path_3)
-    path_list.append(path_4)
-    path_list.append(path_5)
+    path_list = get_path(path_1, path_2, path_3, path_4, path_5)
 
     for i in range(0, 5):
         if url:
@@ -39,7 +31,5 @@ def human_detect(path_1, path_2, path_3, path_4, path_5, url=False):
         if return_detect(model, input_img, THRESHOLD) == False:
             return 'NO_HUMAN'
         else:
-            passZ
+            pass
     return True
-
-# print(human_detect(study_list[0], study_list[1], study_list[2], study_list[3], study_list[4]))
