@@ -1,13 +1,18 @@
 # Import Library
-from torchvision import models
+import torch
 import torchvision.transforms as T
 from PIL import Image
 from return_detect import return_detect
 from load_model import load_model
-from parameter import IMG_SIZE, THRESHOLD
+from parameter import IMG_SIZE, THRESHOLD, study_list
+import requests
+from io import BytesIO
 
-def human_detect(path_1, path_2, path_3, path_4, path_5):
-    model = load_model(0)
+def human_detect(path_1, path_2, path_3, path_4, path_5, url=False):
+    if torch.cuda.is_available():
+        model = load_model(0).cuda()
+    else:
+        model = load_model(0)
 
     # 이미지 path 리스트
     path_list = []
@@ -18,8 +23,13 @@ def human_detect(path_1, path_2, path_3, path_4, path_5):
     path_list.append(path_5)
 
     for i in range(0, 5):
-        path = path_list[i]
-        img = Image.open(path)
+        if url:
+            response = requests.get(path_list[i])
+            img = Image.open(BytesIO(response.content))
+        else:
+            path = path_list[i]
+            img = Image.open(path)
+
         img = img.resize((IMG_SIZE, int(img.height * IMG_SIZE / img.width)))
 
         # 이미지를 텐서로 바꿔주기
@@ -29,5 +39,7 @@ def human_detect(path_1, path_2, path_3, path_4, path_5):
         if return_detect(model, input_img, THRESHOLD) == False:
             return 'NO_HUMAN'
         else:
-            pass
+            passZ
     return True
+
+# print(human_detect(study_list[0], study_list[1], study_list[2], study_list[3], study_list[4]))

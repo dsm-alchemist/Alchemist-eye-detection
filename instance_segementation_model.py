@@ -38,9 +38,3 @@ def instance_segmentation(img_path, threshold=0.95, url=False):
                 rgb_mask = color_masks(masks[i])
                 img = cv2.addWeighted(img2, 1, rgb_mask, 1, 0)
                 return img, pred_cls, masks[i]
-
-"""
-img, pred_classes, masks = instance_segmentation('./data/demo/two_study.jpeg')
-plt.imshow(img)
-plt.show()
-"""
