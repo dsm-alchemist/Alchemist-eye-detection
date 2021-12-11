@@ -6,6 +6,6 @@ def instance_segementation(path_1, path_2, path_3, path_4, path_5, threshold=0.9
     img_list = []
 
     for i in range(len(path_list)):
-        img, pred_classes, masks = instance_segmentation_model(path_list[i], threshold, url)
+        img, _, _ = instance_segmentation_model(path_list[i], threshold, url)
         img_list.append(img)
     return img_list
