@@ -35,17 +35,15 @@ Alchemist 서비스 중 하나인 타이머를 자동으로 멈춰주는 기능�
 # Reference
 
 ## Model
-Human Detection Model은 Pytorch 공식 페이지에 있는 [Keypoint R-CNN](https://arxiv.org/abs/1703.06870)을 사용하였다.  
-Human Segemtation Model은 Pytorch 튜토리얼에 있는 [Mask R-CNN](https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html)을 사용하였다.
+Human Detection Model은 Pytorch 공식 페이지에 있는 [Keypoint R-CNN](https://arxiv.org/abs/1703.06870)을 사용하였습니다.  
+Human Segemtation Model은 유튜브 Programming Datascience and Others님의 [
+Instance Segmentation in PyTorch | Mask RCNN](https://www.youtube.com/watch?v=f8iiTSCZ9FU)를 참고 하였습니다.  
+Human Classification Model은 Pytorch 튜토리얼에 있는 [컴퓨터 비전(VISION)을 위한 전이학습(TRANSFER LEARNING)](https://tutorials.pytorch.kr/beginner/transfer_learning_tutorial.html)을 참고 하였습니다.
 
 ## Data
 Please download datum follow this [posture link](https://www.kaggle.com/deepshah16/silhouettes-of-human-posture?select=bending), [sitting human link](http://www2.informatik.uni-freiburg.de/~oliveira/dataset.html).  
 data label은 bending, lying, sitting, standing으로 이루어져 있습니다.  
 하지만 우리는 lying과 sitting data만 이용해 사람을 detection 후 classification 하겠습니다.
-
-### Thesis
-Human Detection : [https://www.youtube.com/watch?v=WgsZc_wS2qQ&t=632s](https://www.youtube.com/watch?v=WgsZc_wS2qQ&t=632s)  
-Human Segementation : [https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html](https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html)
 
 ### Code
 Human Detection은 4기 선배님이신 [유동근 선배님 코드](https://github.com/DonggeunYu/HumanDetectionCCTV)과 [빵형의 개발도상국님 코드](https://www.youtube.com/watch?v=WgsZc_wS2qQ)를 사용하였습니다.  
