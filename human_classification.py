@@ -1,16 +1,8 @@
 # Import Library
 from __future__ import print_function, division
 import torch
-import torch.nn as nn
-import torch.optim as optim
-from torch.optim import lr_scheduler
-import numpy as np
-import torchvision
-from torchvision import datasets, models, transforms
-import matplotlib.pyplot as plt
-import time
+from torchvision import datasets, transforms
 import os
-import copy
 from parameter import default_path
 
 # 학습을 위해 데이터 증가(augmentation) 및 일반화(normalization)
@@ -37,6 +29,3 @@ dataloaders = {x: torch.utils.data.DataLoader(image_datasets[x], batch_size=4, s
                for x in ['train', 'test']}
 dataset_sizes = {x: len(image_datasets[x]) for x in ['train', 'test']}
 class_names = image_datasets['train'].classes
-
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-
