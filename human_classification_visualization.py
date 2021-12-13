@@ -1,4 +1,5 @@
 # Import Library
+from __future__ import print_function, division
 import torch
 import matplotlib.pyplot as plt
 from human_classification_hyperparameter import dataloaders, class_names
