@@ -1,7 +1,7 @@
 # Import Library
 import torch
 import matplotlib.pyplot as plt
-from human_classification import dataloaders, class_names
+from human_classification_hyperparameter import dataloaders, class_names
 
 def visualize_model(model, num_images=6):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")

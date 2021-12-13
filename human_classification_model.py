@@ -2,7 +2,7 @@
 from __future__ import print_function, division
 import torch
 import time, copy
-from human_classification import dataloaders, dataset_sizes
+from human_classification_hyperparameter import dataloaders, dataset_sizes
 
 def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
     since = time.time()
