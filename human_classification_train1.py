@@ -10,24 +10,27 @@ from parameter import default_path
 def model_train():
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-    model_ft = models.resnet18(pretrained=True)
-    num_ftrs = model_ft.fc.in_features
-    # 여기서 각 출력 샘플의 크기는 2로 설정합니다.
-    # 또는, nn.Linear(num_ftrs, len (class_names))로 일반화할 수 있습니다.
-    model_ft.fc = nn.Linear(num_ftrs, 2)
+    model_conv = models.resnet18(pretrained=True)
+    for param in model_conv.parameters():
+        param.requires_grad = False
 
-    model_ft = model_ft.to(device)
+    # 새로 생성된 모듈의 매개변수는 기본값이 requires_grad=True 임
+    num_ftrs = model_conv.fc.in_features
+    model_conv.fc = nn.Linear(num_ftrs, 2)
+
+    model_conv = model_conv.to(device)
 
     criterion = nn.CrossEntropyLoss()
 
-    # 모든 매개변수들이 최적화되었는지 관찰
-    optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.001, momentum=0.9)
+    # 이전과는 다르게 마지막 계층의 매개변수들만 최적화되는지 관찰
+    optimizer_conv = optim.SGD(model_conv.fc.parameters(), lr=0.01, momentum=0.9)
 
     # 7 에폭마다 0.1씩 학습률 감소
-    exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
+    exp_lr_scheduler = lr_scheduler.StepLR(optimizer_conv, step_size=7, gamma=0.1)
 
-    model_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=25)
-    torch.save(model_ft.state_dict(), default_path + '/model')
+    model_conv = train_model(model_conv, criterion, optimizer_conv, exp_lr_scheduler, num_epochs=25)
+    return model_conv
 
 if __name__ == '__main__':
-    model_train()
+    model = model_train()
+    torch.save(model.state_dict(), default_path + '/model/classification_1.pt')
