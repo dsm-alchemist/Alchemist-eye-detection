@@ -2,7 +2,6 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-import matplotlib.pyplot as plt
 from human_classification_model import CNN
 from human_classification_dataloader import trainloader, testloader
 from human_classification_loss_graph import g_show
@@ -18,7 +17,7 @@ def train():
     num_epoch = len(trainloader)  # 배치개수
     model = CNN().to(device)  # 모델 선언
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.SGD(model.parameters(), lr=1e-3, momentum=0.9)
+    optimizer = optim.SGD(model.parameters(), lr=1e-3)
 
     print(model)
     # 피쳐맵은 다음과 같이 바뀌면서 진행된다. 32 -> 28 -> 14 -> 14 -> 5
@@ -26,6 +25,7 @@ def train():
     for i in range(num_epoch):
         for j, [image, label] in enumerate(trainloader):
             x = image.to(device)
+            # x = x.permute(0, 3, 1, 2)
             y_ = label.to(device)
 
             optimizer.zero_grad()   # optimizer 초기화
