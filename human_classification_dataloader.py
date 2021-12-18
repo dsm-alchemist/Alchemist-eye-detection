@@ -14,7 +14,7 @@ testset = torchvision.datasets.ImageFolder(root=default_path + '/data/test', tra
 
 trainloader = DataLoader(trainset, batch_size=8, shuffle=False)
 testloader = DataLoader(testset, batch_size=8, shuffle=False)
+classes = trainset.classes    # ['lying', 'sitting']
 
 """ # Class 확인
-classes = trainset.classes    # ['lying', 'sitting']
 print(classes) """
