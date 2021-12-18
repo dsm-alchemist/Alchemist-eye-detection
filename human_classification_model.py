@@ -1,22 +1,38 @@
 # Import Library
 import torch.nn as nn
-import torch.nn.functional as F
-
-batch_size = 8
 
 class CNN(nn.Module):
-    def __init__(self):
+    def __init__(self, num_classes):
         super(CNN, self).__init__()
-        self.conv1 = nn.Conv2d(in_channels=1, out_channels=3, kernel_size=5, stride=1)
-        self.conv2 = nn.Conv2d(in_channels=3, out_channels=10, kernel_size=5, stride=1)
-        self.fc1 = nn.Linear(10 * 12 * 12, 50)
-        self.fc2 = nn.Linear(50, 10)
 
-    def forward(self, x):
-        x = F.relu(self.conv1(x))
-        x = F.relu(self.conv2(x))
-        x = x.view(-1, 10 * 12 * 12)
-        x = F.relu(self.fc1(x))
-        x = self.fc2(x)
+        self.layer1 = self.conv_module(3, 16)
+        self.layer2 = self.conv_module(16, 32)
+        self.layer3 = self.conv_module(32, 64)
+        self.layer4 = self.conv_module(64, 128)
+        self.layer5 = self.conv_module(128, 256)
+        self.gap = self.global_avg_pool(256, num_classes)
 
-        return x
+    def forward(self, x, num_classes):
+        out = self.layer1(x)
+        out = self.layer2(out)
+        out = self.layer3(out)
+        out = self.layer4(out)
+        out = self.layer5(out)
+        out = self.gap(out)
+        out = out.view(-1, num_classes)
+
+        return out
+
+    def conv_module(self, in_num, out_num):
+        return nn.Sequential(
+            nn.Conv2d(in_num, out_num, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(out_num),
+            nn.LeakyReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2))
+
+    def global_avg_pool(self, in_num, out_num):
+        return nn.Sequential(
+            nn.Conv2d(in_num, out_num, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(out_num),
+            nn.LeakyReLU(),
+            nn.AdaptiveAvgPool2d((1, 1)))

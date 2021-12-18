@@ -1,60 +1,88 @@
 # Import Library
 import torch
 import torch.nn as nn
-import torch.optim as optim
+from torchvision import transforms
+from torch.utils.data import DataLoader
 from human_classification_model import CNN
-from human_classification_dataloader import trainloader, testloader
+from human_classification_dataloader import CustomImageDataset
 from human_classification_loss_graph import g_show
 from parameter import default_path
 
 def train():
     torch.multiprocessing.freeze_support()
+
     # Device 설정
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     print(f'Your Device : {device}\n')
 
-    loss_ = []  # loss 저장용 리스트
-    num_epoch = len(trainloader)  # 배치개수
-    model = CNN().to(device)  # 모델 선언
+    epoch_num = 20
+    batch_num = 8
+    lr_num = 1e-3
+    loss_train = []
+    loss_test = []
+
+    transforms_train = transforms.Compose([
+        transforms.Resize((128, 128)),
+        transforms.ToTensor()])
+
+    transforms_test = transforms.Compose([
+        transforms.Resize((128, 128)),
+        transforms.ToTensor()])
+
+    train_data_set = CustomImageDataset(data_set_path=default_path+'/data/train', transforms=transforms_train)
+    train_loader = DataLoader(train_data_set, batch_size=batch_num, shuffle=True)
+
+    test_data_set = CustomImageDataset(data_set_path=default_path+'/data/test', transforms=transforms_test)
+    test_loader = DataLoader(test_data_set, batch_size=batch_num, shuffle=True)
+
+    if not (train_data_set.num_classes == test_data_set.num_classes):
+        print("error: Numbers of class in training set and test set are not equal")
+        exit()
+
+    num_classes = train_data_set.num_classes
+    custom_model = CNN(num_classes=num_classes).to(device)
+
+    # Loss and Optimizer
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.SGD(model.parameters(), lr=1e-3)
+    optimizer = torch.optim.Adam(custom_model.parameters(), lr=lr_num)
 
-    print(model)
-    # 피쳐맵은 다음과 같이 바뀌면서 진행된다. 32 -> 28 -> 14 -> 14 -> 5
+    for e in range(epoch_num):
+        for i_batch, item in enumerate(train_loader):
+            images = item['images'].to(device)
+            labels = item['label'].to(device)
 
-    for i in range(num_epoch):
-        for j, [image, label] in enumerate(trainloader):
-            x = image.to(device)
-            # x = x.permute(0, 3, 1, 2)
-            y_ = label.to(device)
+            # Forward pss
+            outputs = custom_model(images)
+            loss = criterion(outputs. labels)
 
-            optimizer.zero_grad()   # optimizer 초기화
-            output = model.forward(x)   # 학습용 데이터로 CNN 실시
-            loss = criterion(output, y_)    # 학습해서 추정해낸 값과, 실제 라벨된 값 비교
-            loss.backward()     # 오차만큼 다시 Back Propagation 시행
-            optimizer.step()    # Back Propagation시 ADAM optimizer 매 Step마다 시행
+            # Backward and optimize
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
 
-            if j % 1000 == 0:
-                print(loss)
-                loss_.append(loss.cpu().detach().numpy())
+            loss_train.append(loss)
 
-    correct = 0
-    total = 0
+            if (i_batch + 1) % batch_num == 0:
+                print('Epoch [{}/{}], Loss: {:.4f}'
+                      .format(e + 1, epoch_num, loss.item()))
 
+    # Test Model
+    custom_model.eval()
     with torch.no_grad():
-        for image, label in testloader:
-            x = image.to(device)
-            y_ = label.to(device)
+        correct = 0
+        total = 0
+        for item in test_loader:
+            images = item['image'].to(device)
+            labels = item['label'].to(device)
+            outputs = custom_model(images)
+            _, predicted = torch.max(outputs.data, 1)
+            total += len(labels)
+            correct += (predicted == labels).sum().item()
 
-            output = model.forward(x)
-            _, output_index = torch.max(output, 1)
+        print('Test Accuracy of the model on the {} test images: {} %'.format(total, 100 * correct / total))
 
-            total += label.size(0)
-            correct += (output_index == y_).sum().float()
 
-        print("Accuracy of Test Data : {}".format(100 * correct / total))
-
-    g_show(loss_, 'Train Loss', 'classification_loss')
+    g_show(loss_train, loss_test, 'Loss', 'classification_loss')
 
     # 모델 저장 경로
     PATH = default_path + '/model/classification_model.pth'
