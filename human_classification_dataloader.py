@@ -12,8 +12,8 @@ transform = transforms.Compose(
 trainset = torchvision.datasets.ImageFolder(root=default_path + '/data/train', transform=transform)
 testset = torchvision.datasets.ImageFolder(root=default_path + '/data/test', transform=transform)
 
-trainloader = DataLoader(trainset, batch_size=8, shuffle=False, num_workers=4)
-testset = DataLoader(testset, batch_size=8, shuffle=False, num_workers=4)
+trainloader = DataLoader(trainset, batch_size=8, shuffle=False)
+testloader = DataLoader(testset, batch_size=8, shuffle=False)
 
 """ # Class 확인
 classes = trainset.classes    # ['lying', 'sitting']
