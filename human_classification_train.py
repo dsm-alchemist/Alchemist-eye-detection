@@ -84,7 +84,7 @@ def train():
 
     # 모델 저장 경로
     PATH = default_path + '/model/classification_model.pth'
-    torch.save(CNN.state_dict(), PATH)  # 모델 저장
+    torch.save(custom_model.state_dict(), PATH)  # 모델 저장
 
 if __name__ == '__main__':
     train()
