@@ -42,32 +42,30 @@ def train():
     num_classes = train_data_set.num_classes
     custom_model = CNN(num_classes=num_classes).to(device)
 
-    # Loss and Optimizer
+    # Loss and optimizer
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(custom_model.parameters(), lr=lr_num)
 
     for e in range(epoch_num):
         for i_batch, item in enumerate(train_loader):
-            images = item['images'].to(device)
+            images = item['image'].to(device)
             labels = item['label'].to(device)
 
-            # Forward pss
+            # Forward pass
             outputs = custom_model(images)
-            loss = criterion(outputs. labels)
+            loss = criterion(outputs, labels)
 
             # Backward and optimize
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
 
-            loss_train.append(loss)
+        if (i_batch + 1) % batch_num == 0:
+            print('Epoch [{}/{}], Loss: {:.4f}'
+                .format(e + 1, epoch_num, loss.item()))
 
-            if (i_batch + 1) % batch_num == 0:
-                print('Epoch [{}/{}], Loss: {:.4f}'
-                      .format(e + 1, epoch_num, loss.item()))
-
-    # Test Model
-    custom_model.eval()
+    # Test the model
+    custom_model.eval()  # eval mode (batchnorm uses moving mean/variance instead of mini-batch mean/variance)
     with torch.no_grad():
         correct = 0
         total = 0

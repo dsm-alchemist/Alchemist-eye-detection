@@ -12,14 +12,14 @@ class CNN(nn.Module):
         self.layer5 = self.conv_module(128, 256)
         self.gap = self.global_avg_pool(256, num_classes)
 
-    def forward(self, x, num_classes):
+    def forward(self, x):
         out = self.layer1(x)
         out = self.layer2(out)
         out = self.layer3(out)
         out = self.layer4(out)
         out = self.layer5(out)
         out = self.gap(out)
-        out = out.view(-1, num_classes)
+        out = out.view(-1, 2)
 
         return out
 
