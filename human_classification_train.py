@@ -60,9 +60,9 @@ def train():
             loss.backward()
             optimizer.step()
 
-        if (i_batch + 1) % batch_num == 0:
-            print('Epoch [{}/{}], Loss: {:.4f}'
-                .format(e + 1, epoch_num, loss.item()))
+            if (i_batch + 1) % batch_num == 0:
+                print('Epoch [{}/{}], Loss: {:.4f}'
+                    .format(e + 1, epoch_num, loss.item()))
 
     # Test the model
     custom_model.eval()  # eval mode (batchnorm uses moving mean/variance instead of mini-batch mean/variance)
