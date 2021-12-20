@@ -48,7 +48,7 @@ study_2 = directory_list[2] + 'study_2.JPG'
 study_3 = directory_list[2] + 'study_3.JPG'
 study_4 = directory_list[2] + 'study_4.JPG'
 study_5 = directory_list[2] + 'study_5.JPG'
-black = directory_list[2] + 'black.JPG'
+white = directory_list[2] + 'white.JPG'
 
 study_list = [study_1, study_2, study_3, study_4, study_5]
 

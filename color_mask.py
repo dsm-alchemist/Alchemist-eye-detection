@@ -1,7 +1,7 @@
 import numpy as np
 
 def color_masks(image, classes='default'):
-    colors = [[20, 20, 20], [255, 255, 255]]
+    colors = [[0, 0, 0], [255, 255, 255]]
     r = np.zeros_like(image).astype(np.uint8)
     g = np.zeros_like(image).astype(np.uint8)
     b = np.zeros_like(image).astype(np.uint8)
