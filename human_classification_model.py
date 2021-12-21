@@ -4,7 +4,6 @@ import torch.nn as nn
 class CNN(nn.Module):
     def __init__(self, num_classes):
         super(CNN, self).__init__()
-
         self.layer1 = self.conv_module(3, 16)
         self.layer2 = self.conv_module(16, 32)
         self.layer3 = self.conv_module(32, 64)

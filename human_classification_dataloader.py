@@ -5,7 +5,6 @@ from PIL import Image
 
 class CustomImageDataset(Dataset):
     def read_data_set(self):
-
         all_img_files = []
         all_labels = []
 
@@ -22,7 +21,6 @@ class CustomImageDataset(Dataset):
                 if img is not None:
                     all_img_files.append(img_file)
                     all_labels.append(label)
-
         return all_img_files, all_labels, len(all_img_files), len(class_names)
 
     def __init__(self, data_set_path, transforms=None):
