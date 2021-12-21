@@ -30,13 +30,14 @@ def instance_segmentation_model(img_path, threshold=0.95, url=False):
         for i in range(len(masks)):
             try:
                 if pred_cls[i] == 'human':
-                    rgb_mask = color_masks(masks[i], 'human')
-                    white_img_bg = cv2.bitwise_and(roi, roi, mask=rgb_mask)
-                    # img = cv2
-                    return img, pred_cls, masks[i]
+                    rgb_mask = color_masks(masks[i])
+                    img = cv2.addWeighted(img, 0, rgb_mask, 1, 0)
+                    out = img.copy()
+                    out = 255-out
+                    return out, pred_cls, masks[i]
                 else:
                     pass
             except:
                 rgb_mask = color_masks(masks[i])
-                img = cv2.addWeighted(img2, 1, rgb_mask, 1, 0)
+                img = cv2.addWeighted(roi, 0, rgb_mask, 1, 0)
                 return img, pred_cls, masks[i]
