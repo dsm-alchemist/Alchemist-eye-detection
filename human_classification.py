@@ -10,7 +10,7 @@ def posture_classification(img_path, url=False):
     classes = ['lying', 'sitting']
     model = CNN(len(classes))
 
-    img = instance_segmentation(default_path + '/data/demo/study_3.JPG')
+    img = instance_segmentation(img_path)
     model.load_state_dict(torch.load(default_path + '/model/classification_model.pth', map_location=device))
     model.eval()
 
