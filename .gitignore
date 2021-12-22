@@ -6,4 +6,5 @@ data.zip
 .ipynb_checkpoints
 /human detection.pdf
 __pycache__
-test.
+test.py
+/chromedriver
