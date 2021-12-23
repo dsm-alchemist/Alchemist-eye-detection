@@ -5,7 +5,7 @@ from io import BytesIO
 from PIL import Image
 from load_model import load_model
 
-def get_prediction(img_path, threshold=0.95, url=False):
+def get_prediction(img_path, threshold=0.7, url=False):
     model = load_model(2)
     if url:
         response = requests.get(img_path)
@@ -21,7 +21,7 @@ def get_prediction(img_path, threshold=0.95, url=False):
     pred_score = list(pred[0]['scores'].detach().cpu().numpy())
     pred_t = [pred_score.index(x) for x in pred_score if x > threshold][-1]
 
-    masks = (pred[0]['masks'] > 0.95).squeeze().detach().cpu().numpy()
+    masks = (pred[0]['masks'] > 0.7).squeeze().detach().cpu().numpy()
     pred_class = [COCO_INSTANCE_CATEGORY_NAMES[i] for i in list(pred[0]['labels'].cpu().numpy())]
     masks = masks[:pred_t + 1]
     pred_class = pred_class[:pred_t + 1]
