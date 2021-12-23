@@ -10,7 +10,7 @@ def posture_classification(img_path, url=False):
     classes = ['lying', 'sitting']
     model = CNN(len(classes))
 
-    img = instance_segmentation(img_path)
+    img = instance_segmentation(path=img_path, threshold=0.70, url=url)
     model.load_state_dict(torch.load(default_path + '/model/classification_model.pth', map_location=device))
     model.eval()
 
@@ -20,7 +20,7 @@ def posture_classification(img_path, url=False):
     pred = model(img).to(device)
     _, preds = torch.max(pred, 1)
 
-    if preds == preds[0]:
-        return 'break'
+    if preds[0] == 1:
+        return "run"
     else:
-        return 'run'
+        return "break"
