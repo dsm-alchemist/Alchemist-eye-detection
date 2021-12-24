@@ -13,7 +13,7 @@ def url_to_image(url, readFlag=cv2.IMREAD_COLOR):
     image = cv2.imdecode(image, readFlag)
     return image
 
-# Instance Segmenatation 함수
+# Instance Segmenatation 함
 def instance_segmentation_model(img_path, threshold=0.7, url=False):
     masks, pred_cls = get_prediction(img_path, threshold=threshold, url=url)
     for i in range(len(masks)):
