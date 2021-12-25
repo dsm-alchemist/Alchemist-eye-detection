@@ -32,7 +32,7 @@ def train():
     train_data_set = CustomImageDataset(data_set_path=default_path+'/data/train', transforms=transforms_train)
     train_loader = DataLoader(train_data_set, batch_size=batch_num, shuffle=True)
 
-    test_data_set = CustomImageDataset(data_set_path=default_path+'/data/test', transforms=transforms_test)
+    test_data_set = CustomImageDataset(data_set_path=default_path+'/data/val', transforms=transforms_test)
     test_loader = DataLoader(test_data_set, batch_size=batch_num, shuffle=True)
 
     if not (train_data_set.num_classes == test_data_set.num_classes):
