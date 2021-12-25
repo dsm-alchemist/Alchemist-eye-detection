@@ -32,8 +32,8 @@ def instance_segmentation_model(img_path, threshold=0.7, url=False):
                 if pred_cls[i] == 'human':
                     rgb_mask = color_masks(masks[i])
                     img = cv2.addWeighted(img, 0, rgb_mask, 1, 0)
-                    img = img.copy()
-                    img = 255-img
+                    # img = img.copy()
+                    # img = 255-img
                     return img, pred_cls, masks[i]
                 else:
                     pass
