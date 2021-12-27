@@ -21,6 +21,6 @@ def posture_classification(img_path, url=False):
     _, preds = torch.max(pred, 1)
 
     if preds[0] == 1:
-        return "run"
-    else:
         return "break"
+    else:
+        return "run"
