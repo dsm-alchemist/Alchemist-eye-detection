@@ -10,9 +10,9 @@ import urllib.request
 
 driver = webdriver.Chrome(default_path + '/chromedriver')
 # gettyimages의 페이지 하나 하나 다 넣음.
-url = r'https://www.google.com/search?q=lying%20down%20at%20table%20front%20view&tbm=isch&tbs=rimg:CRuN0FfS0LEgYQLxNrLH447ssgIGCgIIABAA&hl=ko&sa=X&ved=0CBwQuIIBahcKEwj4hOet3vb0AhUAAAAAHQAAAAAQBw&biw=819&bih=924'
+url = r'https://www.google.com/search?q=human%20sleep%20at%20desk%20front%20view&tbm=isch&hl=ko&tbs=rimg:CWosD4bc9jZuYVQHL2wQwR81sgIGCgIIABAA&sa=X&ved=0CBsQuIIBahcKEwjg1cf7wf_0AhUAAAAAHQAAAAAQBg&biw=1920&bih=929'
 driver.get(url)
-time.sleep(1)
+time.sleep(0.3)
 
 SCROLL_PAUSE_TIME = 3
 # Get scroll height
