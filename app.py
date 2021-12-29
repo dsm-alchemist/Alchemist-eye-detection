@@ -1,20 +1,21 @@
-from flask import Flask, render_template, request
-import os
+# Import Library
+from flask import Flask, request
+from parameter import default_path
 
 app = Flask(__name__)
+
 @app.route('/')
-def index():
-  return render_template('index.html')
+def hello():
+    return 'Hello World!'
 
-@app.route('/multiFileUploads', methods = ['POST'])
-def multi_upload_file():
-  if request.method == 'POST':
-    upload = request.files.getlist("file[]")
-    for f in upload:
-      f.save('./uploads/' + f.filename)
-
-    return render_template('check.html')
+@app.route("/upload", methods=["POST"])
+def upload():
+    uploaded_files = request.files.getlist("files")
+    for img in uploaded_files:
+        img.save(default_path + '/img/' + str(uploaded_files.index(img) + 1) + '.JPG')
+    print(uploaded_files)
+    return ""
 
 
 if __name__ == '__main__':
-  app.run()
+    app.run(host="0.0.0.0", port=8000, debug=True)

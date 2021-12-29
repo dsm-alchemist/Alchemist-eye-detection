@@ -7,5 +7,7 @@ data.zip
 /human detection.pdf
 __pycache__
 test.py
-/chromedriver
 /Illustration-of-the-15-postures-in-writing-posture-dataset-The-corresponding-skeleton-is.jpeg
+/img/
+/crawling/chromedriver
+/img
