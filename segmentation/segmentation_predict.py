@@ -1,8 +1,6 @@
 # Import Library
 from parameter import COCO_INSTANCE_CATEGORY_NAMES
-import requests
 from torchvision import transforms as T
-from io import BytesIO
 from PIL import Image
 from load_model import load_model
 

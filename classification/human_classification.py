@@ -1,5 +1,5 @@
+# Import Library
 from classification.posture_classification import posture_classification
-from parameter import default_path as d
 
 def human_classification(*args) -> bool:
     """

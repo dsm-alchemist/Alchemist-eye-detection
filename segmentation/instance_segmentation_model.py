@@ -6,7 +6,6 @@ import cv2
 from urllib.request import urlopen
 import numpy as np
 from parameter import white
-import requests
 
 # URL로 받아올 경우 이미지로 변환해주는 함수
 def url_to_image(url, readFlag=cv2.IMREAD_COLOR):

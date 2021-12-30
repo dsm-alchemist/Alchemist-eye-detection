@@ -4,9 +4,6 @@ from PIL import Image
 from detection.return_detect import return_detect
 from load_model import load_model
 from parameter import IMG_SIZE
-import requests
-from io import BytesIO
-from get_path import get_path
 
 def human_detection(*args):
     model = load_model(0)
