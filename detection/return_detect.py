@@ -2,7 +2,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
-def return_detect(model, img, input_img, THRESHOLD=0.65):
+def return_detect(model, img, input_img, THRESHOLD=0.5):
     try:
         # Inference
         out = model([input_img])[0]
@@ -10,13 +10,12 @@ def return_detect(model, img, input_img, THRESHOLD=0.65):
             score = score.detach().numpy()
 
             # 사람일 확률
-            if score > THRESHOLD:
-                return True
-            else:
-                return False
+            return score > THRESHOLD
+    # TODO: Set Exception Class
     except:
         return False
-    """ # Visualization 코드입니다. Try구문에 return True 대신 pass를 넣어주세요
+    """
+    # Visualization 코드입니다. Try구문에 return True 대신 pass를 넣어주세요
     else:
         for box, score in zip(out['boxes'], out['scores']):
             score = score.detach().numpy()
@@ -38,4 +37,5 @@ def return_detect(model, img, input_img, THRESHOLD=0.65):
                 plt.show()
                 return True
             else:
-                return False """
+                return False
+    """

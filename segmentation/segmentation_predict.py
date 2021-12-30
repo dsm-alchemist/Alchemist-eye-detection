@@ -6,13 +6,9 @@ from io import BytesIO
 from PIL import Image
 from load_model import load_model
 
-def get_prediction(img_path, threshold=0.7, url=False):
+def get_prediction(img_path, threshold=0.7):
     model = load_model(2)
-    if url:
-        response = requests.get(img_path)
-        img = Image.open(BytesIO(response.content))
-    else:
-        img = Image.open(img_path)
+    img = Image.open(img_path)
     transform = T.Compose([T.ToTensor()])
     img = transform(img)
     img = img.cpu()

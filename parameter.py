@@ -3,7 +3,7 @@ import numpy as np
 import os
 
 # Default Path
-default_path = os.getcwd()
+default_path = '/Users/taki0412/Programing/Repository/alchemist-timer-stop-condition'
 
 # 데이터 디렉토리
 directory_list = [
@@ -16,7 +16,7 @@ directory_list = [
 IMG_SIZE = 480
 
 # 정확도
-THRESHOLD = 0.95
+THRESHOLD = 0.65
 
 # 사람은 검정, 사람을 제외한 나머지는 흰색
 COLORS = np.array([
