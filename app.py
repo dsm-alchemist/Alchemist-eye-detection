@@ -1,20 +1,13 @@
 # Import Library
-from flask import Flask, request
-from parameter import default_path
+from flask import Flask, request, jsonify
+from ai_response import ai_response
 
 app = Flask(__name__)
 
-@app.route('/')
-def hello():
-    return 'Hello World!'
-
-@app.route("/upload", methods=["POST"])
+@app.route("/", methods=["POST"])
 def upload():
     uploaded_files = request.files.getlist("files")
-    for img in uploaded_files:
-        img.save(default_path + '/img/' + str(uploaded_files.index(img) + 1) + '.JPG')
-    print(uploaded_files)
-    return ""
+    return jsonify(ai_response(*uploaded_files))
 
 
 if __name__ == '__main__':
