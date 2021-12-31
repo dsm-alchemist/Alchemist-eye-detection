@@ -23,7 +23,3 @@ def human_classification(*args) -> bool:
         return True
     else:
         return False
-
-
-if __name__ == '__main__':
-    print(human_classification('../img/6.JPG', '../data/demo/study_2.JPG', '../img/3.JPG', '../img/4.JPG', '../img/5.JPG'))
