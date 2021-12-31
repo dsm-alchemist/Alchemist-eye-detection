@@ -17,7 +17,6 @@ def human_classification(*args) -> bool:
             run_num += 1
         else:
             break_num += 1
-        # print(i)
 
     if run_num > break_num:
         return True
