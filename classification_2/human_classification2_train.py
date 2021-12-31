@@ -5,9 +5,14 @@ from torchvision import transforms
 from torch.utils.data import DataLoader
 from human_classification2_model import CNN
 from human_classification2_dataloader import CustomImageDataset
-from parameter import default_path
+import os, sys
+p = os.path.abspath('.')
+sys.path.insert(1, p)
+
 
 def train():
+    default_path = os.getcwd()
+    print(default_path)
     torch.multiprocessing.freeze_support()
 
     # Device 설정
@@ -77,7 +82,7 @@ def train():
         print('Test Accuracy of the model on the {} test images: {} %'.format(total, 100 * correct / total))
 
     # 모델 저장 경로
-    PATH = default_path + '/model/classification2_model.pth'
+    PATH = default_path + '/models/classification2_model.pth'
     torch.save(custom_model.state_dict(), PATH)  # 모델 저장
 
 if __name__ == '__main__':
