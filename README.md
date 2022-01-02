@@ -19,15 +19,30 @@ Alchemist 서비스 중 하나인 타이머를 자동으로 멈춰주는 기능�
 % make stop
 ```
 
-# 작동 알고리즘
-1. client에서 5초 동안 5장의 사진을 찍음.  
-2. client에서 AI 호출.  
+## 작동 알고리즘
+'''
+1. client에서 5초동안 5장의 사진을 찍음.  
+2. client에서 AI Server 호출.  
+3. server에서 keypoint R-CNN 모델이 사람을 Detect.  
+   1. 만약 사람이 없으면 Fasle 반환.  
+   2. True일시 4번.  
+4. CNN 모델이 사람이 앉아있는지 자고 있는지 분류.  
+
+* 처음에는 Segmentation으로 자세의 특징을 분류하고자 접근하였지만  
+Masking을 하지 않는것이 더 좋은 성능을 보여 Classification 2 모델을 사용하기로 했다. 
+'''
+
+### 기획 작동 알고리즘
+'''
+1. client에서 5초동안 5장의 사진을 찍음.  
+2. client에서 AI Server 호출.  
 3. client에서 찍은 사진은 server로 전송.  
 4. server에서 keypoint R-CNN이 사람을 detect.  
    1. server에서 사람이 없다면 타이머 정지 (1개의 사진만 사람이 없어도 됨).  
 5. Input 이미지를 segmentation을 하여 사람만 검정 나머지는 흰색으로 output을 만들어 classification 모델의 Input 값으로 반환.  
 6. server에서 사람이 있다면 일어나있는지 누워있는지 classification모델을 실행.  
 7. 누워있다면 타이머 정지, 일어나 있다면 continue.
+'''
 
 ## Server
 서버는 Flask를 사용했습니다.
