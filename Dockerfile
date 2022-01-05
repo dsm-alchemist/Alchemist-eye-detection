@@ -1,16 +1,15 @@
-FROM python:3.7.10-buster
-FROM wangluhui/opencv
+FROM python:3.8-buster
 
 WORKDIR /app
 
 COPY ./requirements.txt /app/
 
-RUN pip3 install --no-cache-dir --upgrade -r /app/requirements.txt
+RUN /usr/local/bin/python -m pip install --upgrade pip & pip3 install --no-cache-dir --upgrade -r /app/requirements.txt
 
-COPY ./classification_2 /app
-COPY ./detection /app
-COPY ./models /app
-COPY ./segmentation /app
+COPY ./classification_2 /app/classification_2/
+COPY ./detection /app/detection/
+COPY ./models /app/models/
+COPY ./segmentation /app/segmentation/
 COPY ./ai_response.py /app
 COPY ./app.py /app
 COPY ./get_path.py /app
