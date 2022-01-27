@@ -58,7 +58,3 @@ Instance Segmentation in PyTorch | Mask RCNN](https://www.youtube.com/watch?v=f8
 Human Detection은 4기 선배님이신 [유동근 선배님 코드](https://github.com/DonggeunYu/HumanDetectionCCTV)과 [빵형의 개발도상국님 코드](https://www.youtube.com/watch?v=WgsZc_wS2qQ)를 사용하였습니다.  
 Human Classification은 developer0hye님의 [Custom-CNN-Based-Classifier-in-PyTorch](https://github.com/developer0hye/Custom-CNN-based-Image-Classification-in-PyTorch)를 참고했습니다.  
 Human Detection은 빵형의 개발도상국님의 [TorchVision Walkthrough](https://github.com/kairess/torchvision_walkthrough)을 참고했습니다.
-
-## Sound
-[잠박사 유튜브](https://www.youtube.com/channel/UClrKpnEehrQydacUHBptWcw/videos)
-
