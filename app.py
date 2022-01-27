@@ -4,7 +4,9 @@ from flask_cors import CORS
 from ai_response import ai_response
 
 app = Flask(__name__)
-CORS(app)
+cors = CORS(app, resources={
+  r"/ai": {"origin": "*"},
+})
 
 @app.route("/")
 def index():
@@ -16,4 +18,4 @@ def upload():
     return jsonify(ai_response(*uploaded_files))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=8080, debug=True)
