@@ -12,7 +12,7 @@ def posture_classification(img_path):
 
     img = Image.open(img_path)
 
-    model.load_state_dict(torch.load(default_path + '/models/classification2_model.pth', map_location=device))
+    model.load_state_dict(torch.load(f'{default_path}/models/classification2_model.pth', map_location=device))
     model.eval()
 
     transform = T.Compose([T.ToPILImage(), T.Resize((128, 128)), T.ToTensor()])
@@ -22,6 +22,6 @@ def posture_classification(img_path):
     _, preds = torch.max(pred, 1)
 
     if preds[0] == 1:
-        return "break"
-    else:
         return "run"
+    else:
+        return "break"

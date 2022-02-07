@@ -12,9 +12,6 @@ directory_list = [
     default_path + '/data/demo/'
 ]
 
-# 이미지 Size
-IMG_SIZE = 480
-
 # 정확도
 THRESHOLD = 0.65
 
