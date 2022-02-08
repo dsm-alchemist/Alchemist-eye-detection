@@ -11,3 +11,4 @@ test.py
 /img/
 /crawling/chromedriver
 /img
+/models/detection.pth

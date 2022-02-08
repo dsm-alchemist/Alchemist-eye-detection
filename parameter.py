@@ -1,22 +1,13 @@
 # Import Library
-import numpy as np
 import os
 
 # Default Path
-default_path = '/app'
-
-# 데이터 디렉토리
-directory_list = [
-    default_path + '/data/train/',
-    default_path + '/data/test/',
-    default_path + '/data/demo/'
-]
+default_path = os.getcwd()
 
 # 정확도
 THRESHOLD = 0.65
 
-white = directory_list[2] + 'white.JPG'
-
+# Segmentation
 COCO_INSTANCE_CATEGORY_NAMES = [
     'background', 'human', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus',
     'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'N/A', 'stop sign',
